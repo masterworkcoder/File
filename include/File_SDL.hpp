@@ -8,14 +8,14 @@ class File
 public:
   File();
   ~File();
-  bool load(const char* filename, const char* mode);
-  bool isOpen();
-  bool read(char* buffer, int size, int numread = 1);
-  bool write(char* buffer, int size, int numwrite = 1);
-  void close();
-  size_t getSize();
-  SDL_RWops* getFilePtr();
-  const char* getError();
+  bool load(const char* filename, const char* mode); // loads a file mode can be any of the usual modes returns true on success
+  bool isOpen(); // simply checks to see if the file is open returns true if open
+  bool read(char* buffer, int size, int numread = 1); // reads from the file
+  bool write(char* buffer, int size, int numwrite = 1); // writes to the file
+  void close(); // closes the file if the file is open
+  size_t getSize(); // returns the size of the file
+  SDL_RWops* getFilePtr(); // returns a pointer to the file object
+  const char* getError(); // returns a pointer to the error contents
 private:
   SDL_RWops* f_file;
 
