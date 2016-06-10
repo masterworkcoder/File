@@ -19,6 +19,15 @@ Then to build the test file perform the following
 ```bash
 g++ src/test/main.cpp -o test -I./include -I./lib -lFile
 ```
+
+##Usage
+when you include the file to use the SDL system you need to define FILE_SDL
+```c++
+#define FILE_SDL
+#include "File.hpp"
+```
+For more information until I have the documentation pounded out check out the header files and source code.
+
 ##TO-DO
 * convert the comments into documentation
 * create a more efficient build system
