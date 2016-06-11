@@ -2,6 +2,7 @@
 #define FILE_SDL_HPP
 
 #include <SDL2/SDL_rwops.h>
+#include "File_Struct.hpp"
 
 class File
 {
@@ -14,10 +15,10 @@ public:
   bool write(char* buffer, int size, int numwrite = 1); // writes to the file
   void close(); // closes the file if the file is open
   size_t getSize(); // returns the size of the file
-  SDL_RWops* getFilePtr(); // returns a pointer to the file object
+  f_File* getFilePtr(); // returns a pointer to the file object
   const char* getError(); // returns a pointer to the error contents
 private:
-  SDL_RWops* f_file;
+  f_File* f_file;
 
 };
 

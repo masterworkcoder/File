@@ -77,7 +77,7 @@ void File::close()
   }
 } // destroy()
 
-SDL_RWops* File::getFilePtr()
+f_File* File::getFilePtr()
 {
   return f_file;
 } // getFilePtr()

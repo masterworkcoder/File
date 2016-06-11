@@ -76,7 +76,7 @@ void File::close()
   }
 } // destroy()
 
-FILE* File::getFilePtr()
+f_File* File::getFilePtr()
 {
   return f_file;
 } // getFilePtr()
