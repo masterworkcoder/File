@@ -26,10 +26,10 @@ when you include the file to use the SDL system you need to define FILE_SDL
 #define FILE_SDL
 #include "File.hpp"
 ```
-For more information until I have the documentation pounded out check out the header files and source code.
+For more information on usage see the documentation page https://github.com/mckinneyaa/File/wiki/Documentation 
 
 ##TO-DO
-* convert the comments into documentation
+* ~~convert the comments into documentation~~
 * create a more efficient build system
 * add more features and functionality
 
