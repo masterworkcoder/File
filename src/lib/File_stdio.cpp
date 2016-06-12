@@ -60,8 +60,7 @@ bool File::read(char* buffer, int size, int numread)
 
 char File::getC()
 {
-  char character;
-  this->read(&character, 1, 1);
+  char character = fgetc(f_file);
   return character;
 } // getC()
 
