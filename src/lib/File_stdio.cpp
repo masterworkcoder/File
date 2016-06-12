@@ -58,6 +58,37 @@ bool File::read(char* buffer, int size, int numread)
   return false;
 } // read()
 
+char File::getC()
+{
+  char character;
+  this->read(&character, 1, 1);
+  return character;
+} // getC()
+
+char File::peekC()
+{
+  size_t cur_pos = ftell(f_file);
+  char character = this->getC();
+  this->seek(cur_pos, FILE_START);
+  return character;
+} // peekC()
+
+bool File::seek(size_t pos, int from)
+{
+  if(!this->isOpen())
+    return false;
+  if(from == FILE_START)
+    if(fseek(f_file, pos, SEEK_SET) != 0)
+      return false;
+  else if(from == FILE_CUR)
+    if(fseek(f_file, pos, SEEK_CUR) != 0)
+      return false;
+  else if(from == FILE_END)
+    if(fseek(f_file, pos, SEEK_END) != 0)
+      return false;
+  return true;
+} // seek()
+
 bool File::write(char* buffer, int size, int numwrite)
 {
   if(fwrite(buffer, size, numwrite, f_file) < numwrite)

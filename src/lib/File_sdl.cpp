@@ -32,7 +32,7 @@ File::File()
 
 File::~File()
 {
-  close();
+  this->close();
 } // ~File()
 
 bool File::load(const char* filename, const char* mode)
@@ -59,6 +59,37 @@ bool File::read(char* buffer, int size, int numread)
   return false;
 } // read()
 
+char File::getC()
+{
+  char character;
+  this->read(&character, 1, 1);
+  return character;
+} // getC()
+
+char File::peekC()
+{
+  size_t cur_pos = SDL_RWtell(f_file);
+  char character = this->getC();
+  if(this->seek(cur_pos, FILE_START))
+    return character;
+} // peekC()
+
+bool File::seek(size_t pos, int from)
+{
+  if(!this->isOpen())
+    return false;
+  if(from == FILE_START)
+    if(SDL_RWseek(f_file, pos, RW_SEEK_SET) == -1)
+      return false;
+  else if(from == FILE_CUR)
+    if(SDL_RWseek(f_file, pos, RW_SEEK_CUR) == -1)
+      return false;
+  else if(from == FILE_END)
+    if(SDL_RWseek(f_file, pos, RW_SEEK_END))
+      return false;
+  return true;
+} // seek()
+
 bool File::write(char* buffer, int size, int numwrite)
 {
   if(SDL_RWwrite(f_file, buffer, size, numwrite) < numwrite)
@@ -70,7 +101,7 @@ bool File::write(char* buffer, int size, int numwrite)
 
 void File::close()
 {
-  if(isOpen())
+  if(this->isOpen())
   {
     SDL_RWclose(f_file);
     f_file = NULL;

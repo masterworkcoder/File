@@ -25,7 +25,7 @@ SOFTWARE.
 #ifndef FILE_STDIO_HPP
 #define FILE_STDIO_HPP
 
-#include <stdio.h>
+#include <cstdio>
 #include "File_Struct.hpp"
 
 class File
@@ -36,6 +36,9 @@ public:
   bool load(const char* filename, const char* mode); // loads a file mode can be any of the usual modes returns true on success
   bool isOpen(); // simply checks to see if the file is open returns true if open
   bool read(char* buffer, int size, int numread = 1); // reads from the file
+  char getC(); // gets the next character
+  char peekC(); // gets the next character without changing the position in the file
+  bool seek(size_t pos, int from); // seeks a position from the desired point
   bool write(char* buffer, int size, int numwrite = 1); // writes to the file
   void close(); // closes the file if the file is open
   size_t getSize(); // returns the size of the file

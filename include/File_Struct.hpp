@@ -39,4 +39,7 @@ typedef FILE f_File;
 #endif
 #endif
 
+// An enumeration to use for the position to seek
+enum FILE_POS{FILE_START, FILE_CUR, FILE_END};
+
 #endif // FILE_STRUCTURE_HPP

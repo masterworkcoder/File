@@ -14,6 +14,11 @@ int main(int argc, char* argv[])
 		std::cout << buffer << std::endl;
 		delete[] buffer;
 		buffer = NULL;
+		file.seek(0, FILE_START);
+		char character = file.peekC();
+		std::cout << character << std::endl;
+		character = file.getC();
+		std::cout << character << std::endl;
 	}
 	else
 	{
