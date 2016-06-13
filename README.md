@@ -7,18 +7,15 @@ This class came about while learning about game engine development and I decided
 It continues to gain new features and functionality.
 
 ##Building
-To build this library since there are two different parts stdio and SDL2's rwops if you have the SDL2 libraries setup
-and ready to go you can just execute the build.sh file (linux only). It will create a library file and put it in the folder.
+This library does not require to be built it is now a header only library. If you wish to use the SDL_RWops.h functionality.
+You will have to link with the SDL2 library otherwise it requires no library links other than the standard c library.
 
-If you don't have SDL2 installed but still want to use the library refer execute the following
-```bash
-g++ -c src/lib/File.cpp -I./include -o File.o
-ar rc lib/libFile.a File.o
-```
 Then to build the test file perform the following
 ```bash
-g++ src/test/main.cpp -o test -I./include -I./lib -lFile
+g++ src/test/teststdio.cpp -o test -I./include
+g++ src/test/testsdl.cpp -o testsdl -I./include -lSDL2
 ```
+Note: these instructions are for the main repository directory.
 
 ##Usage
 when you include the file to use the SDL system you need to define FILE_SDL
