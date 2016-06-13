@@ -30,7 +30,7 @@ For more information on usage see the documentation page https://github.com/mcki
 
 ##TO-DO
 * ~~convert the comments into documentation~~
-* make it a header only library
+* ~~make it a header only library~~
 * add more features and functionality
 
 
