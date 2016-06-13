@@ -25,17 +25,17 @@ SOFTWARE.
 #define FILE_SDL
 #include <File.hpp>
 
-File::File()
+/*File::File()
 {
   f_file = NULL;
-} // File()
+} */// File()
 
-File::~File()
+/*File::~File()
 {
   this->close();
-} // ~File()
+}*/ // ~File()
 
-bool File::load(const char* filename, const char* mode)
+/*bool File::load(const char* filename, const char* mode)
 {
   f_file = SDL_RWFromFile(filename, mode);
   if(f_file == NULL)
@@ -43,38 +43,38 @@ bool File::load(const char* filename, const char* mode)
     return false;
   }
   return true;
-} // load()
+} */// load()
 
-bool File::isOpen()
+/*bool File::isOpen()
 {
   if(f_file != NULL)
     return true;
   return false;
-} // isOpen()
+}*/ // isOpen()
 
-bool File::read(char* buffer, int size, int numread)
+/*bool File::read(char* buffer, int size, int numread)
 {
   if(SDL_RWread(f_file, buffer, size, numread) > 0)
     return true;
   return false;
-} // read()
+}*/ // read()
 
-char File::getC()
+/*char File::getC()
 {
   char character;
   this->read(&character, 1, 1);
   return character;
-} // getC()
+}*/ // getC()
 
-char File::peekC()
+/*char File::peekC()
 {
-  size_t cur_pos = SDL_RWtell(f_file);
+  //size_t cur_pos = SDL_RWtell(f_file);
   char character = this->getC();
-  if(this->seek(cur_pos, FILE_START))
+  if(this->seek(-1, FILE_CUR))
     return character;
-} // peekC()
+}*/ // peekC()
 
-bool File::seek(size_t pos, int from)
+/*bool File::seek(size_t pos, int from)
 {
   if(!this->isOpen())
     return false;
@@ -88,37 +88,37 @@ bool File::seek(size_t pos, int from)
     if(SDL_RWseek(f_file, pos, RW_SEEK_END))
       return false;
   return true;
-} // seek()
+}*/ // seek()
 
-bool File::write(char* buffer, int size, int numwrite)
+/*bool File::write(char* buffer, int size, int numwrite)
 {
   if(SDL_RWwrite(f_file, buffer, size, numwrite) < numwrite)
   {
     return false;
   }
   return true;
-} // write()
+} */// write()
 
-void File::close()
+/*void File::close()
 {
   if(this->isOpen())
   {
     SDL_RWclose(f_file);
     f_file = NULL;
   }
-} // destroy()
+}*/ // destroy()
 
-f_File* File::getFilePtr()
+/*f_File* File::getFilePtr()
 {
   return f_file;
-} // getFilePtr()
+}*/ // getFilePtr()
 
-size_t File::getSize()
+/*size_t File::getSize()
 {
   return SDL_RWsize(f_file);
-} // getSize()
+} */// getSize()
 
-const char* File::getError()
+/*const char* File::getError()
 {
   return SDL_GetError();
-} // getError()
+} */// getError()

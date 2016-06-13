@@ -24,7 +24,7 @@ SOFTWARE.
 
 #include <File.hpp>
 
-File::File()
+/*File::File()
 {
   f_file = NULL;
 } // File()
@@ -32,9 +32,9 @@ File::File()
 File::~File()
 {
   close();
-} // ~File()
+}*/ // ~File()
 
-bool File::load(const char* filename, const char* mode)
+/*bool File::load(const char* filename, const char* mode)
 {
   f_file = fopen(filename, mode);
   if(f_file == NULL)
@@ -42,37 +42,37 @@ bool File::load(const char* filename, const char* mode)
     return false;
   }
   return true;
-} // load()
+}*/ // load()
 
-bool File::isOpen()
+/*bool File::isOpen()
 {
   if(f_file != NULL)
     return true;
   return false;
-} // isOpen()
+}*/ // isOpen()
 
-bool File::read(char* buffer, int size, int numread)
+/*bool File::read(char* buffer, int size, int numread)
 {
   if(fread(buffer, size, numread, f_file) > 0)
     return true;
   return false;
-} // read()
+}*/ // read()
 
-char File::getC()
+/*char File::getC()
 {
   char character = fgetc(f_file);
   return character;
-} // getC()
+}*/ // getC()
 
-char File::peekC()
+/*char File::peekC()
 {
   size_t cur_pos = ftell(f_file);
   char character = this->getC();
   this->seek(cur_pos, FILE_START);
   return character;
-} // peekC()
+}*/ // peekC()
 
-bool File::seek(size_t pos, int from)
+/*bool File::seek(size_t pos, long from)
 {
   if(!this->isOpen())
     return false;
@@ -86,32 +86,32 @@ bool File::seek(size_t pos, int from)
     if(fseek(f_file, pos, SEEK_END) != 0)
       return false;
   return true;
-} // seek()
+} */// seek()
 
-bool File::write(char* buffer, int size, int numwrite)
+/*bool File::write(char* buffer, int size, int numwrite)
 {
   if(fwrite(buffer, size, numwrite, f_file) < numwrite)
   {
     return false;
   }
   return true;
-} // write()
+} */// write()
 
-void File::close()
+/*void File::close()
 {
   if(isOpen())
   {
     fclose(f_file);
     f_file = NULL;
   }
-} // destroy()
+}*/ // destroy()
 
 f_File* File::getFilePtr()
 {
   return f_file;
 } // getFilePtr()
 
-size_t File::getSize()
+/*size_t File::getSize()
 {
   size_t cur_pos = ftell(f_file);
   if(fseek(f_file, 0, SEEK_END) !=0)
@@ -120,7 +120,7 @@ size_t File::getSize()
   if(fseek(f_file, cur_pos, SEEK_SET) != 0)
     return 0;
   return size;
-} // getSize()
+}*/ // getSize()
 
 const char* File::getError()
 {
